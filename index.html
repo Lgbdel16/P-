@@ -1,1 +1,10 @@
-lag
+<html> <body> <h2>Socket Test</h2> <div> <input type="text" id="input" /> </div> <div> <input type="button" id="connectBtn" value="CONNECT" onclick="connect()" /> <input type="button" id="sendBtn" value="SEND" onclick="send()" disable="true" /> </div> <div id="output"> <h2>Output</h2> </div> </body> <script type="text/javascript"> var Socket; var output = document.getElementById("output"); var connectBtn = document.getElementById("connectBtn"); var sendBtn = document.getElementById("sendBtn"); var wsUrl =  location.hostname + (location.port ? ':'+location.port: ''); function connect() { // open the connection if one does not exist if (Socket !== undefined && Socket.readyState !== Socket.CLOSED) { return; } updateOutput("Trying to establish a Socket connection to wsUrl"); // Create a Socket Socket = new Socket(wsUrl); Socket.onopen = function(event) { updateOutput("Connected!"); connectBtn.disabled = true; sendBtn.disabled = false; }; Socket.onmessage = function(event) { updateOutput(event.data); }; Socket.onclose = function(event) { updateOutput("Connection Closed"); connectBtn.disabled = false; sendBtn.disabled = true; }; } function send() { var text = document.getElementById("input").value; Socket.send(text); } function closeSocket() { Socket.close(); } function updateOutput(text) { output.innerHTML += "<br/>" + text; } </script> </html> 
+
+￼
+
+Share
+
+Follow
+
+edited 
+
