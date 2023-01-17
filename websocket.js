@@ -1,4 +1,4 @@
-<var socket = new WebSocket("wss://alive.github.com/_sockets/u/116641685/ws");
+<var socket = new WebSocket("wss://localhost:443/alive.github.com/_sockets/u/116641685/ws");
 
 socket.message = onMessage;
 
