@@ -1,4 +1,4 @@
-<var socket = new WebSocket("ws://localhost:8080/chat");
+<var socket = new WebSocket("wss://alive.github.com/_sockets/u/116641685/ws:443");
 
 socket.message = onMessage;
 
