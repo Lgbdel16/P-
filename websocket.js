@@ -1,4 +1,4 @@
-var socket = new WebSocket("wss://lgbdel16.github.io/P-:443/com.test/chat");
+var socket = new WebSocket("ws://4.88.99.77:443/com.test/chat");
 
 socket.message = onMessage;
 
