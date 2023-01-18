@@ -1,4 +1,4 @@
-<var socket = new WebSocket("wss://localhost:8080/chat");
+var socket = new WebSocket("wss://localhost:8080/com.test/chat");
 
 socket.message = onMessage;
 
