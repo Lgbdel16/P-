@@ -1,4 +1,4 @@
-var socket = new WebSocket("ws://4.88.99.77:443/com.test/chat");
+var socket = new WebSocket("ws://127.0.0.1:80");
 
 socket.message = onMessage;
 
