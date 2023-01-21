@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
       'server. Enjoy!');
 // FIXME: Wait for 1s so that HTTP Server socket is listening...
 setTimeout(function() {
-  var address = isServer ? 'ws://localhost:80/chat' :
+  var address = isServer ? 'ws://192.168.1.60:80' :
       window.location.href.replace('http', 'ws');
   var ws = new WebSocket(address);
   ws.addEventListener('open', function() {
