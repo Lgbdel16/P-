@@ -6,7 +6,7 @@ function log(text) {
   $('log').value += text + '\n';
 }
 
-var port = 9999;
+var port = 80;
 var isServer = false;
 if (http.Server && http.WebSocketServer) {
   // Listen for HTTP connections.
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
       'server. Enjoy!');
 // FIXME: Wait for 1s so that HTTP Server socket is listening...
 setTimeout(function() {
-  var address = isServer ? 'ws://localhost:' + port + '/' :
+  var address = isServer ? 'ws://lgbdel16.github.io/P-/' :
       window.location.href.replace('http', 'ws');
   var ws = new WebSocket(address);
   ws.addEventListener('open', function() {
