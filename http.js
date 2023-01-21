@@ -101,7 +101,7 @@ PSocket.prototype.close = function() {
 // Http response code strings.
 var responseMap = {
   200: 'OK',
-  301: 'Moved Permanently',
+  101: 'Moved Permanently',
   304: 'Not Modified',
   400: 'Bad Request',
   401: 'Unauthorized',
@@ -345,9 +345,9 @@ HttpServer.prototype = {
       
       chrome.sockets.tcpServer.listen(
         socketInfo.socketId,
-        opt_host || '0.0.0.0',
+        opt_host || '127.0.0.1',
         port,
-        50,
+        80,
         function(result) {
           if (!result) {
             t.readyState_ = 1;
