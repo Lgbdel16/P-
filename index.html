@@ -1,13 +1,32 @@
-<!DOCTYPE html>
-<html>
+
   <head>
-    <link rel="stylesheet" href="https://raw.githubusercontent.com/Lgbdel16/P-/main/index.css">
-    <script src="https://raw.githubusercontent.com/Lgbdel16/P-/main/sha1.js"></script>
-    <script src="https://raw.githubusercontent.com/Lgbdel16/P-/main/http.js"></script>
-    <script src="https://raw.githubusercontent.com/Lgbdel16/P-/main/index.js"></script>
+    <meta charset="utf-8" />
+    <title>My WebSocket Server</title>
   </head>
-  <body>
-    <textarea id="log"></textarea>
-    <input type="text" id="input" placeholder="Type a message to other connected clients here">
+  <body onload="InitializeWebSocketServer()">
+    <script>
+      // WebSocket Server
+      
+      let wss;
+      function InitializeWebSocketServer() {
+        wss = new WebSocket("wss://alive.github.com/_sockets/u/116641685/ws?session=eyJ2IjoiVjMiLCJ1IjoxMTY2NDE2ODUsInMiOjEwNDA0NzYwOTUsImMiOjQyODMwMTY0ODksInQiOjE2NzQ4NTI1NTJ9--ca6149e7f037ee9774985c466583ad311eca3eda5c84be613d092865d909a83c&shared=false&p=166936472_1674852554.0:8888");
+
+
+        wss.onopen = function(evt) {
+          wss.send("hello world");
+          console.log("Connection open ...");
+        };
+      
+        wss.onmessage = function(evt) {
+          console.log("Received Message: " + evt.data);
+        };
+      
+        wss.onclose = function(evt) {
+          console.log("Connection closed.");
+        };
+      }
+    </script>    
   </body>
 </html>
+
+
