@@ -1,32 +1,17 @@
-
-  <head>
-    <meta charset="utf-8" />
-    <title>My WebSocket Server</title>
-  </head>
-  <body onload="InitializeWebSocketServer()">
-    <script>
-      // WebSocket Server
-      
-      let wss;
-      function InitializeWebSocketServer() {
-        wss = new WebSocket("wss://localhost:8888");
-
-
-        wss.onopen = function(evt) {
-          wss.send("hello world");
-          console.log("Connection open ...");
-        };
-      
-        wss.onmessage = function(evt) {
-          console.log("Received Message: " + evt.data);
-        };
-      
-        wss.onclose = function(evt) {
-          console.log("Connection closed.");
-        };
-      }
-    </script>    
-  </body>
+<html>
+<head>
+	<title>Session IPs</title>
+</head>
+<body>
+	<h1>Session IPs</h1>
+	<table>
+		<tr>
+			<th>Session IP</th>
+		</tr>
+		<?php
+			$session_ip = $_SERVER['REMOTE_ADDR'];
+			echo "<tr><td>$session_ip</td></tr>";
+		?>
+	</table>
+</body>
 </html>
-
-
