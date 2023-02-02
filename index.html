@@ -1,17 +1,36 @@
 <html>
-<head>
-	<title>Session IPs</title>
-</head>
-<body>
-	<h1>Session IPs</h1>
-	<table>
-		<tr>
-			<th>Session IP</th>
-		</tr>
-		<?php
-			$session_ip = $_SERVER['REMOTE_ADDR'];
-			echo "<tr><td>$session_ip</td></tr>";
-		?>
-	</table>
-</body>
+  <head>
+    <script>
+      // Store the connected session IPs in an array
+      var connectedIPs = [];
+      
+      // Get the client's IP and add it to the connected IPs array
+      function getClientIP() {
+        var ip = "" + location.host;
+        if (!connectedIPs.includes(ip)) {
+          connectedIPs.push(ip);
+        }
+        displayConnectedIPs();
+      }
+
+      // Display the connected IPs in the HTML page
+      function displayConnectedIPs() {
+        var display = document.getElementById("display-ips");
+        display.innerHTML = "Connected IPs: " + connectedIPs.join(", ");
+      }
+
+      // Set a notification window to all connected sessions
+      function setNotification() {
+        var input = document.getElementById("input-field").value;
+        alert(input);
+      }
+    </script>
+  </head>
+  <body onload="getClientIP()">
+    <div id="display-ips"></div>
+    <form>
+      <input type="text" id="input-field">
+      <button type="button" onclick="setNotification()">Send</button>
+    </form>
+  </body>
 </html>
