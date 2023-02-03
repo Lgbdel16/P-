@@ -1,38 +1,13 @@
 <html>
   <head>
     <script>
-      let socket;
-
       window.onload = function() {
-        socket = new WebSocket('ws://localhost:8080');
-
-        socket.onopen = function(event) {
-          console.log('WebSocket connected:', event);
-        };
-
-        socket.onmessage = function(event) {
-          console.log('WebSocket message received:', event.data);
-        };
-
-        socket.onclose = function(event) {
-          console.log('WebSocket closed:', event);
-        };
-
-        socket.onerror = function(error) {
-          console.error('WebSocket error:', error);
-        };
-      };
-
-      function sendMessage(message) {
-        if (socket && socket.readyState === WebSocket.OPEN) {
-          socket.send(message);
-        } else {
-          console.error('WebSocket not connected');
-        }
+        var protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
+        window.location.protocol = protocol;
       }
     </script>
   </head>
   <body>
-    <button onclick="sendMessage('Hello, server!')">Send Message</button>
+    The protocol will change to `ws://` on page load.
   </body>
 </html>
