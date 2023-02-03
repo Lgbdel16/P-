@@ -1,13 +1,39 @@
+<!DOCTYPE html>
 <html>
   <head>
+    <title>WebSocket Example</title>
+  </head>
+  <body onload="connectWebSocket()">
+    <h1>WebSocket Connection</h1>
+
     <script>
-      window.onload = function() {
-        var protocol = window.location.protocol === "https:" ? "ws:" : "ws:";
-        window.location.protocol = protocol;
+      function connectWebSocket() {
+        // Open a WebSocket connection to the specified URL
+        var socket = new WebSocket("wss://alive.github.com/_sockets/u/116641685/ws?session=eyJ2IjoiVjMiLCJ1IjoxMTY2NDE2ODUsInMiOjEwNDUxMzQ4MjMsImMiOjM1NjY3OTYxOTcsInQiOjE2NzU0MDc5NTJ9--1445c8d9ec75794fb3788b91b5a74bcccc236292b9a2449a26732ba7c884fa66&shared=false&p=174483606_1675407952.1");
+        
+        // Set the origin header
+        socket.origin = "https://github.com";
+        
+        // Connection was successfully opened
+        socket.onopen = function(event) {
+          console.log("WebSocket connection opened: ", event);
+        };
+        
+        // An error occurred while opening the connection
+        socket.onerror = function(error) {
+          console.error("WebSocket error: ", error);
+        };
+        
+        // Connection was closed
+        socket.onclose = function(event) {
+          console.log("WebSocket connection closed: ", event);
+        };
+        
+        // A message was received from the server
+        socket.onmessage = function(event) {
+          console.log("WebSocket message received: ", event.data);
+        };
       }
     </script>
-  </head>
-  <body>
-    The protocol will change to `ws://` on page load.
   </body>
 </html>
