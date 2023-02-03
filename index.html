@@ -8,11 +8,17 @@
 
     <script>
       function connectWebSocket() {
+        // Get the origin of the HTML page
+        var origin = window.location.origin;
+        
         // Open a WebSocket connection to the specified URL
         var socket = new WebSocket("wss://alive.github.com/_sockets/u/116641685/ws?session=eyJ2IjoiVjMiLCJ1IjoxMTY2NDE2ODUsInMiOjEwNDUxMzQ4MjMsImMiOjM1NjY3OTYxOTcsInQiOjE2NzU0MDc5NTJ9--1445c8d9ec75794fb3788b91b5a74bcccc236292b9a2449a26732ba7c884fa66&shared=false&p=174483606_1675407952.1");
         
-        // Set the origin header
-        socket.origin = "https://github.com";
+        // Set the Host header to the origin
+        socket.binaryType = "arraybuffer";
+        socket.headers = {
+          Host: origin
+        };
         
         // Connection was successfully opened
         socket.onopen = function(event) {
